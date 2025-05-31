@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ОПГ ХАСАН</title>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-main: linear-gradient(135deg, #0c0c0e, #1a1a1d);
+      --bg-header: radial-gradient(circle at center, #2c0000 0%, #0c0c0e 80%);
+      --text-color: #e0e0e0;
+      --card-bg: #1c1c1e;
+      --card-text: #fff;
+      --highlight: #ff5555;
+      --footer-bg: #111;
+      --footer-text: #888;
+    }
+
+    body.light {
+      --bg-main: linear-gradient(135deg, #f0f0f0, #ffffff);
+      --bg-header: radial-gradient(circle at center, #ffe0e0 0%, #ffffff 80%);
+      --text-color: #222;
+      --card-bg: #ffffff;
+      --card-text: #111;
+      --highlight: #cc0000;
+      --footer-bg: #ddd;
+      --footer-text: #333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Russo One', sans-serif;
+      background: var(--bg-main);
+      color: var(--text-color);
+      overflow-x: hidden;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    header {
+      /* height: 150vh;  удалено */
+      min-height: 100vh; /* минимальная высота */
+      padding-top: 8rem; /* добавлен отступ сверху */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* чтобы контент не растягивался по высоте */
+      align-items: center;
+      text-align: center;
+      background: var(--bg-header);
+      animation: pulse 5s infinite;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      height: auto; /* чтобы высота подстраивалась */
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.03);
+      }
+    }
+
+    h1 {
+      font-size: 5rem; /* чуть увеличил */
+      letter-spacing: 12px; /* чуть увеличил */
+      text-shadow: 0 0 25px #ff2f2f, 0 0 50px #ff2f2f;
+      margin-bottom: 3rem;
+    }
+
+    .founders {
+      margin-top: 3rem;
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      animation: slideUp 2s ease-out;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .founder {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #8b0000cc;
+      transform: scale(1);
+      transition: transform 0.4s, box-shadow 0.4s, background 0.4s, color 0.4s;
+      color: var(--card-text);
+      max-width: 300px;
+      flex: 1 1 280px;
+    }
+
+    .founder:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #ff0000cc;
+    }
+
+    .founder h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--highlight);
+    }
+
+    .founder p {
+      font-size: 1rem;
+      color: inherit;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(200px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Новый блок правил */
+    .rules {
+      margin-top: 4rem;
+      background: var(--card-bg);
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      max-width: 600px;
+      box-shadow: 0 0 20px #8b0000cc;
+      color: var(--card-text);
+      text-align: left;
+      font-size: 1.1rem;
+      animation: slideUp 2s ease-out;
+      align-self: center;
+    }
+
+    .rules h2 {
+      color: var(--highlight);
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .rules ul {
+      list-style: decimal inside;
+      padding-left: 0;
+    }
+
+    .rules ul li {
+      margin-bottom: 0.8rem;
+      line-height: 1.4;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--footer-bg);
+      font-size: 1.2rem;
+      color: var(--footer-text);
+      box-shadow: 0 -5px 20px #000;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .theme-toggle svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--highlight);
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle:hover svg {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <svg id="theme-icon" viewBox="0 0 24 24">
+      <path d="M21.64 13.65a9 9 0 1 1-9.29-11.6 9 9 0 0 0 9.29 11.6z"></path>
+    </svg>
+  </button>
+
+  <header>
+    <h1>ОПГ ХАСАН</h1>
+
+    <h2 style="color: var(--highlight); text-align: center; margin: 2rem 0 1rem; font-size: 2.5rem;">Основатели</h2>
+
+    <div class="founders">
+      <div class="founder">
+        <h2>Максим</h2>
+        <p>чето типа хакера и программиста, хороший друг.</p>
+      </div>
+      <div class="founder">
+        <h2>Илья</h2>
+        <p>не хочет описания :D</p>
+      </div>
+      <div class="founder">
+        <h2>Костя</h2>
+        <p>Весёлый но тупой хасанатор который любит котиков и собачек немного умеет гонять на заднем.</p>
+      </div>
+    </div>
+
+    <div class="rules">
+      <h2>Правила</h2>
+      <ul>
+        <li>кто едет первым, тот выбирает по какой дороге ехать.</li>
+        <li>конечную точку всегда выбираем вместе.</li>
+        <li>в случае если кто-то отстал, то ждем его.</li>
+        <li>не ссориться, не драться.</li>
+        <li>побольше выпендриваться, ездить без рук и т.д.</li>
+      </ul>
+    </div>
+  </header>
+
+  <footer>
+    &copy; 2025 ОПГ ХАСАН. Все права защищены.
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const icon = document.getElementById('theme-icon');
+      body.classList.toggle('light');
+
+      if (body.classList.contains('light')) {
+        icon.setAttribute('d', 'M12 4.354a8 8 0 0 1 0 15.292 8.001 8.001 0 0 0 0-15.292z');
+      } else {
+        icon.setAttribute('d', 'M21.64 13.65a9 9 0 1 1-9.29-11.6 9 9 0 0 0 9.29 11.6z');
+      }
+    }
+  </script>
+</body>
+</html>
